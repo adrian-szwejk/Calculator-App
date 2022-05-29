@@ -14,7 +14,8 @@ class Calculator extends StatelessWidget {
       home: const CalcView(), //the home location of the app
       theme: ThemeData
           .dark(), //Cant be constant so I had to remove const from in from of "MaterialApp" and only place it in front of parts that needed it
-      themeMode: ThemeMode.dark, //Preset themes used to color/design app
+      themeMode: ThemeMode
+          .dark, //Preset themes used to color/design app | Also is not constant because app is always changing and adding dark themed parts
       debugShowCheckedModeBanner:
           false, //Removes red debug banner in the top right of the app
     );
@@ -43,6 +44,29 @@ class _CalcViewState extends State<CalcView> {
             fontSize: 35.0,
           ),
         ),
+      ),
+      backgroundColor: Colors.black,
+      body: Column(
+        children: <Widget>[
+          Container(
+            //Container is a class that combines design widgets to make it more convenient (Basically a container is like a box to store contents)
+            child: const Text(
+              //child in this context means that you can only have one widget in this container
+              "0",
+              style: TextStyle(fontSize: 30.0),
+            ),
+          ),
+          Container(
+            child: const Text(
+              //child in this context means that you can only have one widget in this container
+              "0",
+              style: TextStyle(
+                fontSize: 30.0,
+                color: Colors.grey,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
