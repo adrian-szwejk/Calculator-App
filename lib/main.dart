@@ -49,6 +49,8 @@ class _CalcViewState extends State<CalcView> {
       body: Column(
         children: <Widget>[
           Container(
+            alignment: Alignment.centerRight,
+            padding: const EdgeInsets.all(10.0),
             //Container is a class that combines design widgets to make it more convenient (Basically a container is like a box to store contents)
             child: const Text(
               //child in this context means that you can only have one widget in this container
@@ -57,6 +59,8 @@ class _CalcViewState extends State<CalcView> {
             ),
           ),
           Container(
+            alignment: Alignment.centerRight,
+            padding: const EdgeInsets.all(10.0),
             child: const Text(
               //child in this context means that you can only have one widget in this container
               "0",
@@ -65,6 +69,30 @@ class _CalcViewState extends State<CalcView> {
                 color: Colors.grey,
               ),
             ),
+          ),
+          const Expanded(
+            //Expanded widgets give the widget inside of it as much space as it can occupy
+            child: Divider(),
+          ),
+          Table(
+            //Used to create cells with buttons in each in the shape of a table
+            children: <TableRow>[
+              TableRow(
+                //Table requires a list of Tablerows(which are like the rows of cells of the table)
+                children: <Widget>[
+                  TextButton(
+                    //Creating a button for the clear button
+                    onPressed: () {},
+                    child: const Text(
+                      "C",
+                      style: TextStyle(
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ],
       ),
