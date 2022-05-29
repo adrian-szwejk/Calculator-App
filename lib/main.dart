@@ -83,26 +83,142 @@ class _CalcViewState extends State<CalcView> {
                 children: <Widget>[
                   buildButton(
                     name: "C",
+                    color: Colors.red,
+                    fontColor: Colors.white,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "\u232b",
                     color: Colors.grey[800],
                     fontColor: Colors.red,
                     fontSize: 30.0,
                   ),
                   buildButton(
-                    name: "C",
+                    name: "^",
                     color: Colors.grey[800],
-                    fontColor: Colors.red,
+                    fontColor: Colors.green,
                     fontSize: 30.0,
                   ),
                   buildButton(
-                    name: "C",
+                    name: "\u00F7",
                     color: Colors.grey[800],
-                    fontColor: Colors.red,
+                    fontColor: Colors.green,
+                    fontSize: 30.0,
+                  ),
+                ],
+              ),
+              TableRow(
+                //Table requires a list of Tablerows(which are like the rows of cells of the table)
+                children: <Widget>[
+                  buildButton(
+                    name: "7",
+                    color: Colors.grey[800],
+                    fontColor: Colors.white,
                     fontSize: 30.0,
                   ),
                   buildButton(
-                    name: "C",
+                    name: "8",
                     color: Colors.grey[800],
-                    fontColor: Colors.red,
+                    fontColor: Colors.white,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "9",
+                    color: Colors.grey[800],
+                    fontColor: Colors.white,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "x",
+                    color: Colors.grey[800],
+                    fontColor: Colors.green,
+                    fontSize: 30.0,
+                  ),
+                ],
+              ),
+              TableRow(
+                //Table requires a list of Tablerows(which are like the rows of cells of the table)
+                children: <Widget>[
+                  buildButton(
+                    name: "4",
+                    color: Colors.grey[800],
+                    fontColor: Colors.white,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "5",
+                    color: Colors.grey[800],
+                    fontColor: Colors.white,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "6",
+                    color: Colors.grey[800],
+                    fontColor: Colors.white,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "-",
+                    color: Colors.grey[800],
+                    fontColor: Colors.green,
+                    fontSize: 30.0,
+                  ),
+                ],
+              ),
+              TableRow(
+                //Table requires a list of Tablerows(which are like the rows of cells of the table)
+                children: <Widget>[
+                  buildButton(
+                    name: "1",
+                    color: Colors.grey[800],
+                    fontColor: Colors.white,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "2",
+                    color: Colors.grey[800],
+                    fontColor: Colors.white,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "3",
+                    color: Colors.grey[800],
+                    fontColor: Colors.white,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "+",
+                    color: Colors.grey[800],
+                    fontColor: Colors.green,
+                    fontSize: 30.0,
+                  ),
+                ],
+              ),
+              TableRow(
+                //Table requires a list of Tablerows(which are like the rows of cells of the table)
+                children: <Widget>[
+                  buildButton(
+                    name: "+/-",
+                    color: Colors.grey[800],
+                    fontColor: Colors.white,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "0",
+                    color: Colors.grey[800],
+                    fontColor: Colors.white,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: ".",
+                    color: Colors.grey[800],
+                    fontColor: Colors.white,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "=",
+                    color: Colors.green,
+                    fontColor: Colors.white,
                     fontSize: 30.0,
                   ),
                 ],
