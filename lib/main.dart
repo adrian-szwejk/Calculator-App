@@ -72,7 +72,8 @@ class _CalcViewState extends State<CalcView> {
           ),
           const Expanded(
             //Expanded widgets give the widget inside of it as much space as it can occupy
-            child: Divider(),
+            child:
+                Divider(), //Divider used to create a line that divides the different parts of the table and the containers above
           ),
           Table(
             //Used to create cells with buttons in each in the shape of a table
@@ -83,10 +84,21 @@ class _CalcViewState extends State<CalcView> {
                   TextButton(
                     //Creating a button for the clear button
                     onPressed: () {},
+                    style: ButtonStyle(
+                      padding: //Padding for "C" button but requires MSP b/c in table and not container
+                          MaterialStateProperty.all(const EdgeInsets.all(5.0)),
+                      shape: MaterialStateProperty.all(
+                        //Shape of the cells of the table
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
                     child: const Text(
                       "C",
                       style: TextStyle(
                         color: Colors.red,
+                        fontSize: 30.0,
                       ),
                     ),
                   ),
