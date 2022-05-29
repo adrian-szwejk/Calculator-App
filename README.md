@@ -1,21 +1,14 @@
-<<<<<<< HEAD
-# calculator_app
+#**Flutter Calculator App**
+This is a new, small calculator app that I plan to build while learning the basics of flutter.
+**I plan to create an app with buttons that will _allow you to accurately calculate numbers_ using the 4 basic math operations**
 
-A new Flutter project.
+##**Visuals**
+I plan to begin with the _visuals_ as I feel that they will allow me to grasp the use of flutter widgets better before including some basic math operations into the buttons. 
+I plan to use formatting tools as well as **special characters for operations like _powers and roots_**. 
 
-## Getting Started
+###Math
+Lastly, I plan to implement all the parts of a calculator that will allow you to, well, calculate.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# Calculator-App
-- I am learning how to code in dart using flutter through a calculator app.
->>>>>>> 89c6f35b33f341f265814d5f561c996c2792c9e3
