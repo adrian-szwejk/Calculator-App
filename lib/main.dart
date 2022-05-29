@@ -82,10 +82,29 @@ class _CalcViewState extends State<CalcView> {
                 //Table requires a list of Tablerows(which are like the rows of cells of the table)
                 children: <Widget>[
                   buildButton(
-                      name: "C",
-                      color: Colors.grey[800],
-                      fontColor: Colors.red,
-                      fontSize: 30.0),
+                    name: "C",
+                    color: Colors.grey[800],
+                    fontColor: Colors.red,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "C",
+                    color: Colors.grey[800],
+                    fontColor: Colors.red,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "C",
+                    color: Colors.grey[800],
+                    fontColor: Colors.red,
+                    fontSize: 30.0,
+                  ),
+                  buildButton(
+                    name: "C",
+                    color: Colors.grey[800],
+                    fontColor: Colors.red,
+                    fontSize: 30.0,
+                  ),
                 ],
               ),
             ],
@@ -95,33 +114,37 @@ class _CalcViewState extends State<CalcView> {
     );
   }
 
-  TextButton buildButton(
+  Container buildButton(
       //This function was extracted to prevent repetitive code when creating table of buttons
       {String name = "",
       Color fontColor = Colors.green,
       double fontSize = 30.0,
       Color? color}) {
     //The brackets allow each parameter to not be required and so that you can pass whichever one you want (There needs to be default values since they're not required as a parameter)
-    return TextButton(
-      //Creating a button for the clear button
-      onPressed: () {},
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(color),
-        padding: //Padding for "C" button but requires MSP b/c it's buttonStyle
-            MaterialStateProperty.all(const EdgeInsets.all(5.0)),
-        shape: MaterialStateProperty.all(
-          //Shape of the cells of the table
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-                10.0), //Makes the end of the border curved
+    return Container(
+      //Wrapped original testButton with container to allow for padding between buttons
+      padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+      child: TextButton(
+        //Creating a button for the clear button
+        onPressed: () {},
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(color),
+          padding: //Padding for "C" button but requires MSP b/c it's buttonStyle
+              MaterialStateProperty.all(const EdgeInsets.all(5.0)),
+          shape: MaterialStateProperty.all(
+            //Shape of the cells of the table
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                  10.0), //Makes the end of the border curved
+            ),
           ),
         ),
-      ),
-      child: Text(
-        name,
-        style: TextStyle(
-          color: fontColor,
-          fontSize: fontSize,
+        child: Text(
+          name,
+          style: TextStyle(
+            color: fontColor,
+            fontSize: fontSize,
+          ),
         ),
       ),
     );
