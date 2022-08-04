@@ -49,6 +49,7 @@ class _CalcViewState extends State<CalcView> {
           output = "";
           equation = "";
           break;
+
         case "\u232b":
           //Backspace button
           if (output.isNotEmpty) {
@@ -64,6 +65,7 @@ class _CalcViewState extends State<CalcView> {
             }
           }
           break;
+
         case "\u003D":
           //Equals button
           equation = input;
@@ -82,7 +84,43 @@ class _CalcViewState extends State<CalcView> {
             output = "Error";
           }
           break;
+
+        case "\u00F7":
+        //Divison Button
+        case "\u00D7":
+        //Multiplication Button
+        case "+":
+        //Addition button
+        case "-":
+        //Subtraction button
+        case "^":
+          //Power button
+          if (output.isNotEmpty) {
+            input = output + text;
+          } else {
+            input += text;
+          }
+          //Appends or sets text to input
+          break;
+
         default:
+          if (output.isNotEmpty) {
+            //Checking if we are able to parse the last char of string
+            if (int.tryParse(input[input.length - 1]) == null) {
+              //This tells us that there is some kind of operation happening
+              input += text;
+              output = "";
+            } else {
+              //If there is no operation you can set the value to the text
+              input = text;
+              output = "";
+            }
+          } else if (input == "0") {
+            //If the input is empty
+            input = text;
+          } else {
+            input += text;
+          }
       }
     });
   }
