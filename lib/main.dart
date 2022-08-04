@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -44,18 +46,20 @@ class _CalcViewState extends State<CalcView> {
             fontSize: 35.0,
           ),
         ),
+        centerTitle: true,
+        shadowColor: const Color.fromARGB(255, 157, 0, 255),
       ),
       backgroundColor: Colors.black,
       body: Column(
         children: <Widget>[
           Container(
             alignment: Alignment.centerRight,
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 10.0),
             //Container is a class that combines design widgets to make it more convenient (Basically a container is like a box to store contents)
             child: const Text(
               //child in this context means that you can only have one widget in this container
               "0",
-              style: TextStyle(fontSize: 30.0),
+              style: TextStyle(fontSize: 50.0),
             ),
           ),
           Container(
@@ -65,7 +69,7 @@ class _CalcViewState extends State<CalcView> {
               //child in this context means that you can only have one widget in this container
               "0",
               style: TextStyle(
-                fontSize: 30.0,
+                fontSize: 50.0,
                 color: Colors.grey,
               ),
             ),
@@ -244,6 +248,8 @@ class _CalcViewState extends State<CalcView> {
         //Creating a button for the clear button
         onPressed: () {},
         style: ButtonStyle(
+          fixedSize: MaterialStateProperty.all(const Size.fromHeight(50)),
+          //Sets fixed size for all buttons instead of dif size for carrot and divide
           backgroundColor: MaterialStateProperty.all(color),
           padding: //Padding for "C" button but requires MSP b/c it's buttonStyle
               MaterialStateProperty.all(const EdgeInsets.all(5.0)),
@@ -251,7 +257,7 @@ class _CalcViewState extends State<CalcView> {
             //Shape of the cells of the table
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
-                  10.0), //Makes the end of the border curved
+                  12.0), //Makes the end of the border curved
             ),
           ),
         ),
