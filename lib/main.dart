@@ -1,6 +1,7 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(const Calculator());
@@ -33,8 +34,8 @@ class CalcView extends StatefulWidget {
 
 class _CalcViewState extends State<CalcView> {
   //Strings to keep track of values that are changing
-  String input = "0";
-  String output = "0";
+  String input = "";
+  String output = "";
   String equation = "";
   //Function to update values on top right after pressing buttosn
   void calculation(String text) {
@@ -64,11 +65,22 @@ class _CalcViewState extends State<CalcView> {
           }
           break;
         case "\u003D":
-          //Equation button
+          //Equals button
           equation = input;
           //Created this to use in package to compute math but not display ugly symbols
           equation = equation.replaceAll("\u00F7", "/");
           equation = equation.replaceAll("\u00D7", "*");
+          try {
+            //Parser, Expression, and ContextModel from Math_expression package that allows us to parse math equation
+            Parser p = Parser();
+            Expression exp = p.parse(equation);
+            ContextModel cm = ContextModel();
+            //evaluation type is real numbers that are set to a context model that keeps track of functions and variables
+            output = "${exp.evaluate(EvaluationType.REAL, cm)}";
+            //Setting output to string with variables(evaluation of equation from earlier) inside of it
+          } catch (e) {
+            output = "Error";
+          }
           break;
         default:
       }
