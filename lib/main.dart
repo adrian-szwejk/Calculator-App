@@ -32,6 +32,23 @@ class CalcView extends StatefulWidget {
 }
 
 class _CalcViewState extends State<CalcView> {
+  //Strings to keep track of values that are changing
+  String input = "";
+  String output = "";
+  String equation = "";
+  //Function to update values on top right after pressing buttosn
+  void calculation(String text) {
+    //The param = uni-code(buttton) that the user clicks on
+    setState(() {
+      //Changing the state of values and displays them
+      switch (text) {
+        case "C":
+          break;
+        default:
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,19 +73,19 @@ class _CalcViewState extends State<CalcView> {
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 10.0),
             //Container is a class that combines design widgets to make it more convenient (Basically a container is like a box to store contents)
-            child: const Text(
+            child: Text(
               //child in this context means that you can only have one widget in this container
-              "0",
-              style: TextStyle(fontSize: 50.0),
+              input,
+              style: const TextStyle(fontSize: 50.0),
             ),
           ),
           Container(
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.all(10.0),
-            child: const Text(
+            child: Text(
               //child in this context means that you can only have one widget in this container
-              "0",
-              style: TextStyle(
+              output,
+              style: const TextStyle(
                 fontSize: 50.0,
                 color: Colors.grey,
               ),
