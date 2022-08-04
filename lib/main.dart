@@ -33,8 +33,8 @@ class CalcView extends StatefulWidget {
 
 class _CalcViewState extends State<CalcView> {
   //Strings to keep track of values that are changing
-  String input = "";
-  String output = "";
+  String input = "0";
+  String output = "0";
   String equation = "";
   //Function to update values on top right after pressing buttosn
   void calculation(String text) {
@@ -43,6 +43,32 @@ class _CalcViewState extends State<CalcView> {
       //Changing the state of values and displays them
       switch (text) {
         case "C":
+          //Clear button
+          input = "0";
+          output = "";
+          equation = "";
+          break;
+        case "\u232b":
+          //Backspace button
+          if (output.isNotEmpty) {
+            input = "0";
+            output = "";
+            equation = "";
+          } else {
+            //Deleting last char in string
+            input = input.substring(0, input.length - 1);
+            if (input == "") {
+              //If we delete too much
+              input = "0";
+            }
+          }
+          break;
+        case "\u003D":
+          //Equation button
+          equation = input;
+          //Created this to use in package to compute math but not display ugly symbols
+          equation = equation.replaceAll("\u00F7", "/");
+          equation = equation.replaceAll("\u00D7", "*");
           break;
         default:
       }
