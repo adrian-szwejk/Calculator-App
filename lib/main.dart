@@ -277,7 +277,7 @@ class _CalcViewState extends State<CalcView> {
                     fontSize: 30.0,
                   ),
                   buildButton(
-                    name: "x",
+                    name: "\u00D7",
                     color: Colors.grey[800],
                     fontColor: Colors.green,
                     fontSize: 30.0,
