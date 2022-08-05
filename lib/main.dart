@@ -97,6 +97,8 @@ class _CalcViewState extends State<CalcView> {
           //Power button
           if (output.isNotEmpty) {
             input = output + text;
+          } else if (input == "0") {
+            input = text;
           } else {
             input += text;
           }
@@ -107,42 +109,48 @@ class _CalcViewState extends State<CalcView> {
             //Checking if last char of input != null -> it's not an operator
             int idx = input.lastIndexOf(RegExp(r"\+|-|\u00F7|\u00D7"));
             //Passing a pattern, and it returns the last index of that pattern
-            if (int.tryParse(input[idx - 1]) != null) {
-              //Checking if value before the index is not an operator
-              switch (input[idx]) {
-                case "+":
-                  //Replaces the index value with the corresponding operation
-                  input = input.replaceRange(
-                      idx, input.length, "+${input.substring(idx + 1)}");
-                  //For objects in a string you use "${object.name}" for example
-                  break;
-                case "-":
-                  input = input.replaceRange(
-                      idx, input.length, "-${input.substring(idx + 1)}");
-                  break;
-                case "\u00F7":
-                  //Division
-                  input = input.replaceRange(
-                      idx + 1, input.length, "-${input.substring(idx + 1)}");
-                  break;
-                case "\u00D7":
-                  //Multiplication
-                  input = input.replaceRange(
-                      idx + 1, input.length, "-${input.substring(idx + 1)}");
-                  break;
+            if (idx != -1 && idx != 0) {
+              if (int.tryParse(input[idx - 1]) != null) {
+                //Checking if value before the index is not an operator
+                switch (input[idx]) {
+                  case "+":
+                    //Replaces the index value with the corresponding operation
+                    input = input.replaceRange(
+                        idx, input.length, "-${input.substring(idx + 1)}");
+                    //For objects in a string you use "${object.name}" for example
+                    break;
+                  case "-":
+                    input = input.replaceRange(
+                        idx, input.length, "+${input.substring(idx + 1)}");
+                    break;
+                  case "\u00F7":
+                    //Division
+                    input = input.replaceRange(
+                        idx + 1, input.length, "-${input.substring(idx + 1)}");
+                    break;
+                  case "\u00D7":
+                    //Multiplication
+                    input = input.replaceRange(
+                        idx + 1, input.length, "-${input.substring(idx + 1)}");
+                    break;
+                }
+              } else {
+                switch (input[idx]) {
+                  case "+":
+                    input = input.replaceRange(
+                        idx, input.length, "+${input.substring(idx + 1)}");
+                    break;
+                  case "-":
+                    input = input.replaceRange(
+                        idx, input.length, "-${input.substring(idx + 1)}");
+                    break;
+                  default:
+                }
               }
+            } else if (idx == -1) {
+              input = "-$input";
             } else {
-              switch (input[idx]) {
-                case "+":
-                  input = input.replaceRange(
-                      idx, input.length, "+${input.substring(idx + 1)}");
-                  break;
-                case "-":
-                  input = input.replaceRange(
-                      idx, input.length, "-${input.substring(idx + 1)}");
-                  break;
-                default:
-              }
+              input = input.substring(1);
             }
           }
           break;
@@ -382,7 +390,9 @@ class _CalcViewState extends State<CalcView> {
       padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
       child: TextButton(
         //Creating a button for the clear button
-        onPressed: () {},
+        onPressed: () {
+          calculation(name);
+        },
         style: ButtonStyle(
           fixedSize: MaterialStateProperty.all(const Size.fromHeight(50)),
           //Sets fixed size for all buttons instead of dif size for carrot and divide
