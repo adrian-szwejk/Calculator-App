@@ -102,7 +102,50 @@ class _CalcViewState extends State<CalcView> {
           }
           //Appends or sets text to input
           break;
-
+        case "+/-":
+          if (int.tryParse(input[input.length - 1]) != null) {
+            //Checking if last char of input != null -> it's not an operator
+            int idx = input.lastIndexOf(RegExp(r"\+|-|\u00F7|\u00D7"));
+            //Passing a pattern, and it returns the last index of that pattern
+            if (int.tryParse(input[idx - 1]) != null) {
+              //Checking if value before the index is not an operator
+              switch (input[idx]) {
+                case "+":
+                  //Replaces the index value with the corresponding operation
+                  input = input.replaceRange(
+                      idx, input.length, "+${input.substring(idx + 1)}");
+                  //For objects in a string you use "${object.name}" for example
+                  break;
+                case "-":
+                  input = input.replaceRange(
+                      idx, input.length, "-${input.substring(idx + 1)}");
+                  break;
+                case "\u00F7":
+                  //Division
+                  input = input.replaceRange(
+                      idx + 1, input.length, "-${input.substring(idx + 1)}");
+                  break;
+                case "\u00D7":
+                  //Multiplication
+                  input = input.replaceRange(
+                      idx + 1, input.length, "-${input.substring(idx + 1)}");
+                  break;
+              }
+            } else {
+              switch (input[idx]) {
+                case "+":
+                  input = input.replaceRange(
+                      idx, input.length, "+${input.substring(idx + 1)}");
+                  break;
+                case "-":
+                  input = input.replaceRange(
+                      idx, input.length, "-${input.substring(idx + 1)}");
+                  break;
+                default:
+              }
+            }
+          }
+          break;
         default:
           if (output.isNotEmpty) {
             //Checking if we are able to parse the last char of string
